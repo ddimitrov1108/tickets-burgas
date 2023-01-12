@@ -54,8 +54,8 @@ export default function ProfileView() {
         <div className="mb-6">
           <span className="font-semibold">Смяна на паролата</span>
           <p className="text-sm text-secondary-dark">
-            Бъдете сигурни да въведете достатъчно сигурна парола иначе рискувате
-            акаунта Ви да бъде изложен на риск.
+            Бъдете сигурни да въведете сигурна парола иначе рискувате
+            акаунта Ви да бъде изложен на риск
           </p>
         </div>
         <ChangePasswordForm />

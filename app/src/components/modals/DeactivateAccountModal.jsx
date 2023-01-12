@@ -1,24 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
-import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 export default function DeactivateAccountModal({ isModalOpen, setIsModalOpen }) {
-  const userJwt = useSelector((state) => state.user.jwt);
   const navigate = useNavigate();
 
-  const deleteUserAccount = async () => {
+  const deactivateAccount = async () => {
     await axios
-      .delete(`${import.meta.env.VITE_API_URL}/user/delete`, {
+      .delete(`${import.meta.env.VITE_API_URL}/user/deactivate`, {
         headers: {
-          authorization: `bearer ${userJwt}`,
+          authorization: `bearer ${Cookies.get("jwt")}`,
         },
       })
       .then(({ data }) => {
         console.log(data);
-        toast.success("Вашият акаунт беше успешно изтрит!");
+        toast.success("Вашият акаунт беше успешно деактивиран!");
         navigate("/logout", { replace: true });
       })
       .catch((err) =>
@@ -26,18 +25,17 @@ export default function DeactivateAccountModal({ isModalOpen, setIsModalOpen }) 
       );
   };
 
-  const confirmHandler = () => deleteUserAccount();
+  const confirmHandler = () => deactivateAccount();
   const cancelHandler = () => setIsModalOpen(false);
 
   return (
     <Modal
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
-      modalTitle="Потвърждение за изтриване на акаунта"
+      modalTitle="Потвърждение за деактивиране на акаунта"
     >
       <p className="mb-4 text-sm text-secondary-dark">
-        Когато изтриете акаунта си вашият активен билет и всякаква информация за
-        Вас бива изтривана.
+      Когато деактивирате акаунта си вашите активни билети стават неактивни
       </p>
       <div className="flex flex-wrap justify-between w-full gap-2 md:flex-nowrap md:flex-row-reverse">
         <Button
@@ -46,7 +44,7 @@ export default function DeactivateAccountModal({ isModalOpen, setIsModalOpen }) 
           fullWidth
           onClick={confirmHandler}
         >
-          Изтриване
+          Деактивиране
         </Button>
         <Button
           variant="text"

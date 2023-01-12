@@ -44,7 +44,7 @@ export default function HeaderNavBar() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="fixed hidden lg:block top-0 w-full px-4 lg:py-2 bg-white">
+    <div className="fixed hidden lg:block top-0 w-full p-4 bg-white">
       <div className="flex w-full items-center gap-8 mx-auto max-w-7xl">
         <NavLink to="/" replace>
           <BrandLogo className="text-2xl" />

@@ -44,7 +44,7 @@ export default function App() {
     <>
       <HeaderNavBar />
 
-      <div className="p-4 lg:py-8 max-w-5xl mx-auto mb-16 lg:mb-0 lg:mt-16">
+      <div className="p-4 lg:py-8 max-w-5xl mx-auto mb-16 lg:mb-0 lg:mt-12">
         <Outlet />
       </div>
 

@@ -21,7 +21,7 @@ const tickets = [
 export default function HomeView() {
   return (
     <>
-      <div className="hidden font-semibold text-center lg:block">
+      <div className="hidden mt-12 font-semibold text-center lg:block">
         <p className="text-2xl">Закупуване на пътнически билет</p>
         <p className="py-8 text-sm max-w-[600px] w-full mx-auto">
           Нашите услуги са достъпни за Вас благодарение на{" "}

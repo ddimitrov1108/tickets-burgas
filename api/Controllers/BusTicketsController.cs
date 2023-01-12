@@ -42,10 +42,11 @@ namespace ticketBurgasAPI.Controllers
         }
 
         [HttpGet("fetch")]
-        public async Task<ActionResult<JsonArray>> FetchTickets()
+        public async Task<ActionResult> FetchTickets()
         {
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.SerialNumber));
             User? user = await context.Users.Where(user => user.Id == userId).FirstOrDefaultAsync();
+            DateTime now = DateTime.Now;
 
             if (user == null)
                 return NotFound();
@@ -61,13 +62,18 @@ namespace ticketBurgasAPI.Controllers
                         barCode = ticket.BarCode,
                         travelTime = ticketDetails.TravelTime,
                         issuer = ticketDetails.Issuer,
-                        isActive = ticket.DateOfExpire > DateTime.Now,
                         dateOfIssue = ticket.DateOfIssue,
-                        dateOfExpire = ticket.DateOfExpire
-                    })
-                .Take(5);
+                        dateOfExpire = ticket.DateOfExpire,
+                        isActive = ticket.DateOfExpire > now,
+                    });
 
-            return Ok(tickets);
+            var activeTickets = tickets.Where(ticket => ticket.isActive);
+
+            return Ok(new
+            {
+                activeTickets,
+                tickets
+            });
         }
 
         [HttpPost("buy/{ticketId}")]

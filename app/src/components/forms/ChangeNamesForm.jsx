@@ -91,12 +91,12 @@ export default function ChangeNamesForm() {
 
         <Button
           type="submit"
-          className={"flex justify-center mt-4 md:w-fit ml-auto"}
+          className={"flex items-center justify-center mt-4 md:w-fit ml-auto"}
           disabled={formLoading}
           fullWidth
         >
           {formLoading ? (
-            <FaSpinner className="mt-1 text-xl animate-spin" />
+            <FaSpinner className="mx-12 text-xl animate-spin" />
           ) : (
             "Смяна на имената"
           )}

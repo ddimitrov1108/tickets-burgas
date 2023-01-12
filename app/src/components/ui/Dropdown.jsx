@@ -36,7 +36,7 @@ export default function Dropdown({
       >
         <Menu.Items
           className={clsx(
-            "z-40 absolute right-0 mt-2 w-52 origin-top-right px-4 py-2 rounded-md bg-white shadow-lg ring-1 ring-secondary-light focus:outline-none",
+            "z-40 absolute right-0 mt-2 w-52 origin-top-right py-2 rounded-md bg-white shadow-lg ring-1 ring-secondary-light focus:outline-none outline-none select-none",
             menuItemsClassName
           )}
         >
