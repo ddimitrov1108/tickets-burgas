@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from "react";
 import ActiveTicketsCardSkeleton from "../../components/skeletons/ActiveTicketsCardSkeleton";
 import TicketsTableSkeleton from "../../components/skeletons/TicketsTableSkeleton";
 import ActiveTicketCard from "../../components/ActiveTicketCard";
@@ -15,7 +14,7 @@ import { Button, Card, Container } from "../../components/ui";
 
 export default function MyTicketsView() {
   const { data, isLoading, isFetching } = useQuery(
-    ["tickets"],
+    ["activeTickets", "tickets"],
     async () => {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/tickets/fetch`,
@@ -58,7 +57,7 @@ export default function MyTicketsView() {
               "--swiper-navigation-size": "18px",
             }}
           >
-            {activeTickets.map((ticket) => (
+            {data.activeTickets.map((ticket) => (
               <SwiperSlide key={ticket.barCode}>
                 <ActiveTicketCard ticket={ticket} />
               </SwiperSlide>

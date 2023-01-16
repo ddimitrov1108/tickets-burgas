@@ -1,14 +1,15 @@
 import { Card } from "./ui";
+import { computeDate } from "../js/computeDate";
 import QRCode from "react-qr-code";
 import clsx from "clsx";
-import { computeDate } from "../js/computeDate";
+
 
 export default function ActiveTicketCard({ ticket }) {
   const dateOfIssue = computeDate(new Date(ticket.dateOfIssue));
   const dateOfExpire = computeDate(new Date(ticket.dateOfExpire));
 
   return (
-    <Card className="md:p-8">
+    <Card className="md:p-8 pb-8">
       <div className="flex flex-col justify-between gap-8 sm:flex-row">
         <div>
           <div className="text-2xl text-primary-main font-semibold">

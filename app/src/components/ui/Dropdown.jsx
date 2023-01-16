@@ -16,12 +16,12 @@ export default function Dropdown({
       <div>
         <Menu.Button
           className={clsx(
-            " w-full flex justify-between text-left text-black",
+            " w-full items-center flex justify-between text-left text-black",
             menuBtnClassName
           )}
         >
           {menuTitle}
-          {chevronDown && <FaChevronDown className="my-1.5 ml-1 text-sm" />}
+          {chevronDown && <FaChevronDown className="ml-1 text-sm" />}
         </Menu.Button>
       </div>
 
