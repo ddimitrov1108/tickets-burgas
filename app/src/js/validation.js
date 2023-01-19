@@ -5,8 +5,7 @@ export const loginSchema = Yup.object().shape({
     .email("Невалидно поле")
     .matches(/^(?!.*@[^,]*,)/)
     .required("Полето е задължително"),
-    password: Yup.string()
-    .required("Полето е задължително"),
+  password: Yup.string().required("Полето е задължително"),
 });
 
 export const registerSchema = Yup.object().shape({
@@ -52,15 +51,15 @@ export const changeNamesSchema = Yup.object().shape({
 });
 
 export const checkoutSchema = Yup.object().shape({
-  debitCardNumber: Yup.string()
+  ccNumber: Yup.string()
     .matches(/^\d+$/, "Невалидно поле")
     .length(16, "Трябва да въведете 16-цифрения код на картата")
     .required("Полето е задължително"),
-  debitCardDateOfExpire: Yup.string()
+  ccExpire: Yup.string()
     .matches(/^\d+$/, "Невалидно поле")
     .length(4)
     .required("Полето е задължително"),
-  debitCardCvv: Yup.string()
+  ccCvv: Yup.string()
     .matches(/^\d+$/, "Невалидно поле")
     .length(3)
     .required("Полето е задължително"),

@@ -18,17 +18,9 @@ export default function TicketsTable({ tickets }) {
     setLimit(pageLimit);
   };
 
-  const pagePrevHandler = () => {
-    if (page === 0) return;
-
-    setPage(page - 1);
-  };
-
-  const pageNextHandler = () => {
-    if (page * limit + limit > tickets.length) return;
-
-    setPage(page + 1);
-  };
+  const pagePrevHandler = () => (page === 0 ? null : setPage(page - 1));
+  const pageNextHandler = () =>
+    page * limit + limit > tickets.length ? null : setPage(page + 1);
 
   const pageStart = page * limit + 1;
   const pageEnd =
@@ -40,7 +32,7 @@ export default function TicketsTable({ tickets }) {
 
   return (
     <div className="mt-8">
-      <div className="overflow-auto min-h-[321px] max-h-[321px]">
+      <div className="overflow-auto min-h-[321px]">
         <table className="relative table-fixed overflow-scroll min-w-full">
           <thead className="sticky top-0 bg-white">
             <tr className="text-sm text-secondary-dark py-10">

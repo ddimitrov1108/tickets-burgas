@@ -21,7 +21,7 @@ export default function Collapse({ title = "Collapse", className, children }) {
             />
           </Disclosure.Button>
 
-          <Disclosure.Panel className={clsx("px-4 py-2 rounded-md shadow-sm")}>
+          <Disclosure.Panel className={clsx("px-4 py-2 rounded-md shadow-xl")}>
             {children}
           </Disclosure.Panel>
         </>

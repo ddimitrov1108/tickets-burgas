@@ -12,6 +12,7 @@ import HelpCenterView from "../views/HelpCenterView";
 import PageNotFoundView from "../views/PageNotFoundView";
 import ProfileView from "../views/account/ProfileView";
 import MyTicketsView from "../views/account/MyTicketsView";
+import CheckoutView from "../views/account/CheckoutView";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
           {
             path: "tickets",
             element: <MyTicketsView />,
+          },
+          {
+            path: "checkout/:id",
+            element: <CheckoutView />,
           },
           {
             path: "",

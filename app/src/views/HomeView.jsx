@@ -1,18 +1,19 @@
 import TicketCard from "../components/TicketCard";
+import { v4 as uuid } from "uuid";
 
 const tickets = [
   {
-    id: 1,
+    id: uuid(),
     travelTime: 60,
     cost: 1.5,
   },
   {
-    id: 2,
+    id: uuid(),
     travelTime: 90,
     cost: 2,
   },
   {
-    id: 3,
+    id: uuid(),
     travelTime: 120,
     cost: 2.5,
   },

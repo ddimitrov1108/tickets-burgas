@@ -5,7 +5,10 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-export default function DeactivateAccountModal({ isModalOpen, setIsModalOpen }) {
+export default function DeactivateAccountModal({
+  isModalOpen,
+  setIsModalOpen,
+}) {
   const navigate = useNavigate();
 
   const deactivateAccount = async () => {
@@ -35,7 +38,7 @@ export default function DeactivateAccountModal({ isModalOpen, setIsModalOpen }) 
       modalTitle="Потвърждение за деактивиране на акаунта"
     >
       <p className="mb-4 text-sm text-secondary-dark">
-      Когато деактивирате акаунта си вашите активни билети стават неактивни
+        Когато деактивирате акаунта си вашите активни билети стават неактивни
       </p>
       <div className="flex flex-wrap justify-between w-full gap-2 md:flex-nowrap md:flex-row-reverse">
         <Button

@@ -1,7 +1,11 @@
 import React from 'react'
+import Collapse from '../components/ui/Collapse'
 
 export default function HelpCenterView() {
   return (
-    <div>HelpCenterView</div>
+    <>
+    <Collapse>
+    asdadada
+    </Collapse></>
   )
 }

@@ -50,7 +50,7 @@ export default function TextField({
   }, []);
 
   return (
-    <div className="py-1.5">
+    <div className={clsx("py-1.5", fullWidth ? "w-full" : "w-fit")}>
       <div className="min-w-fit pb-1.5">
         {label && (
           <div className="min-w-fit text-sm font-semibold">{label}</div>
@@ -66,7 +66,7 @@ export default function TextField({
       <div className="relative">
         {type === "password" && (
           <button
-          tabIndex={-1}
+            tabIndex={-1}
             type="button"
             disabled={disabled}
             className="bg-white absolute top-2 right-2 px-1 py-1 text-xl text-secondary-dark cursor-pointer rounded-full select-none"
@@ -80,8 +80,7 @@ export default function TextField({
           disabled={disabled}
           type={passwordVisible ? "text" : type}
           className={clsx(
-            "px-4 py-2 border rounded-md",
-            fullWidth && "w-full",
+            "px-4 py-2 border rounded-md w-full",
             className,
             errors[field.name] && touched[field.name]
               ? " border-error-main focus:outline-error-main"

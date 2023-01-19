@@ -3,7 +3,6 @@ import { computeDate } from "../js/computeDate";
 import QRCode from "react-qr-code";
 import clsx from "clsx";
 
-
 export default function ActiveTicketCard({ ticket }) {
   const dateOfIssue = computeDate(new Date(ticket.dateOfIssue));
   const dateOfExpire = computeDate(new Date(ticket.dateOfExpire));

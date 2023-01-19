@@ -4,7 +4,7 @@ export default function Card({
   className,
   title = "",
   subtitle = "",
-  elevated = true,
+  elevated = false,
   children,
   ...restProps
 }) {

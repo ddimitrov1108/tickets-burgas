@@ -69,7 +69,7 @@ export default function FooterNavBar() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 flex justify-around w-full bg-white outline-none select-none lg:hidden"
+      className="fixed bottom-0 left-0 flex justify-around w-full bg-white outline-none select-none lg:hidden z-40"
       style={{ boxShadow: "0px -5px 10px rgb(0 0 0 / 0.15)" }}
     >
       {publicRoutes.map((link) => (

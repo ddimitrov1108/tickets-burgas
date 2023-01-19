@@ -5,14 +5,15 @@ import { Button, Card } from "./ui";
 
 export default function TicketCard({ ticket, className }) {
   return (
-    <Card className={clsx("lg:max-w-[280px] max-h-fit w-full", className)}>
-      <div className="p-6 mx-auto rounded-full w-fit bg-lightGray">
-        <FaTicketAlt className="mx-auto text-3xl text-primary-main" />
+    <Card
+      className={clsx("lg:max-w-[280px] max-h-fit w-full", className)}
+      elevated
+    >
+      <div className="p-6 mx-auto rounded-full w-fit bg-primary-light/10 text-3xl">
+        <FaTicketAlt className="mx-auto text-primary-main" />
       </div>
 
-      <div
-        className="flex flex-col gap-6 mt-6 font-semibold text-center"
-      >
+      <div className="flex flex-col gap-6 mt-6 font-semibold text-center">
         <span>Пътнически Билет</span>
         <span className="text-2xl text-primary-main">
           {ticket.travelTime} мин.
@@ -29,7 +30,11 @@ export default function TicketCard({ ticket, className }) {
           . Не важи в ППС на други превозвачи.
         </span>
         <span className="text-2xl font-bold">{ticket.cost.toFixed(2)} лв.</span>
-        <NavLink to={`account/checkout/${ticket.id}`} replace>
+        <NavLink
+          to={`account/checkout/${ticket.id}`}
+          state={{ ticket }}
+          replace
+        >
           <Button
             variant="outlined"
             className="hover:bg-primary-main hover:text-white"

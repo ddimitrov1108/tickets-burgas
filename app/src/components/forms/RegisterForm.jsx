@@ -45,7 +45,7 @@ export default function RegisterForm() {
       onSubmit={submitHandler}
     >
       <Form>
-        <div className="md:flex md:gap-6 md:justify-between">
+        <div className="md:flex gap-4 justify-between">
           <Field
             id="firstName"
             name="firstName"
