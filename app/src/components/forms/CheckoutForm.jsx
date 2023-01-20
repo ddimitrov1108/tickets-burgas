@@ -80,6 +80,7 @@ export default function CheckoutForm() {
             </div>
             Checkout информация
           </div>
+
           <Field
             id="ccNumber"
             name="ccNumber"
