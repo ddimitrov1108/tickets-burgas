@@ -2,6 +2,7 @@ import { FaTicketAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { Button, Card } from "./ui";
+import { v4 as uuid } from "uuid";
 
 export default function TicketCard({ ticket, className }) {
   return (
@@ -31,7 +32,7 @@ export default function TicketCard({ ticket, className }) {
         </span>
         <span className="text-2xl font-bold">{ticket.cost.toFixed(2)} лв.</span>
         <NavLink
-          to={`account/checkout/${ticket.id}`}
+          to={`account/checkout/${uuid()}`}
           state={{ ticket }}
           replace
         >

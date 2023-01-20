@@ -35,6 +35,8 @@ export default function MyTicketsView() {
     }
   );
 
+  const activeTickets = data && data.filter(t => t.isActive);
+
   return isLoading || isFetching ? (
     <>
       <ActiveTicketsCardSkeleton />
@@ -43,7 +45,7 @@ export default function MyTicketsView() {
   ) : (
     <>
       <div className="w-full relative">
-        {data.activeTickets && data.activeTickets.length > 0 ? (
+        {activeTickets && activeTickets.length > 0 ? (
           <Swiper
             spaceBetween={30}
             pagination={{
@@ -57,7 +59,7 @@ export default function MyTicketsView() {
               "--swiper-navigation-size": "18px",
             }}
           >
-            {data.activeTickets.map((ticket) => (
+            {activeTickets.map((ticket) => (
               <SwiperSlide key={ticket.barCode}>
                 <ActiveTicketCard ticket={ticket} />
               </SwiperSlide>
@@ -83,8 +85,8 @@ export default function MyTicketsView() {
         )}
       </div>
 
-      {data.tickets && data.tickets.length > 0 ? (
-        <TicketsTable tickets={data.tickets} />
+      {data && data.length > 0 ? (
+        <TicketsTable tickets={data} />
       ) : (
         <Container className="py-24 flex flex-col text-center justify-center text-secondary-dark">
           <span>Нямате направени покупки</span>

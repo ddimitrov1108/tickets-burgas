@@ -20,7 +20,7 @@ export default function ActiveTicketsCardSkeleton() {
         </div>
 
         <div className="flex flex-col gap-4 items-center">
-          <FaQrcode className="text-secondary-light/50 h-44 w-44" />
+          <FaQrcode className="animate-pulse text-secondary-light/50 h-44 w-44" />
           <Skeleton className="h-4 w-24" />
         </div>
       </div>

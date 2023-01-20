@@ -67,13 +67,20 @@ namespace ticketBurgasAPI.Controllers
                         isActive = ticket.DateOfExpire > now,
                     });
 
-            var activeTickets = tickets.Where(ticket => ticket.isActive);
+            return Ok(tickets);
+        }
 
-            return Ok(new
-            {
-                activeTickets,
-                tickets
-            });
+        [HttpGet("active")]
+        public async Task<ActionResult<bool>> HasActiveTicket()
+        {
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.SerialNumber));
+            User? user = await context.Users.Where(user => user.Id == userId).FirstOrDefaultAsync();
+
+            if (user == null)
+                return NotFound();
+
+            int hasActiveTickets = await context.BusTickets.Where(ticket => ticket.Uid == user.Id && DateTime.Compare(DateTime.Now, ticket.DateOfExpire) <= 0).CountAsync();
+            return Ok(hasActiveTickets);
         }
 
         [HttpPost("buy/{ticketId}")]
@@ -84,23 +91,6 @@ namespace ticketBurgasAPI.Controllers
 
             if (user == null)
                 return NotFound();
-
-            //bool hasActiveTicket = await context.BusTickets
-            //    .Join(
-            //        context.BusTicketDetails,
-            //        ticket => ticket.Tdid,
-            //        ticketDetails => ticketDetails.Id,
-            //        (ticket, ticketDetails) => new
-            //        {
-            //            ticket.Uid,
-            //            ticket.DateOfIssue,
-            //            ticketDetails.TravelTime
-            //        }).
-            //    Where(ticket => ticket.Uid == user.Id && ticket.DateOfIssue.AddMinutes(ticket.TravelTime) > DateTime.Now)
-            //    .CountAsync() > 0;
-
-            //if (hasActiveTicket)
-            //    return BadRequest("Вече имате активен билет");
 
             var travelTime = await context.BusTicketDetails
                 .Where(ticketDetails => ticketDetails.Id == ticketId)

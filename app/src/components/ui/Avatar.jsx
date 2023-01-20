@@ -7,7 +7,7 @@ export default function Avatar({ name, className, ...restProps }) {
   return (
     <div
       className={clsx(
-        "w-fit p-4 text-center rounded-full text-2xl transition-all font-semibold border text-primary-main border-primary-main bg-white",
+        "flex justify-center items-center p-6 uppercase text-center rounded-full text-2xl transition-all font-semibold border text-primary-main border-primary-main bg-white",
         className
       )}
       {...restProps}

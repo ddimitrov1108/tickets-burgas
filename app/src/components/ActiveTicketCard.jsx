@@ -8,7 +8,7 @@ export default function ActiveTicketCard({ ticket }) {
   const dateOfExpire = computeDate(new Date(ticket.dateOfExpire));
 
   return (
-    <Card className="md:p-8 pb-8">
+    <Card className="md:p-8 pb-8 select-none">
       <div className="flex flex-col justify-between gap-8 sm:flex-row">
         <div>
           <div className="text-2xl text-primary-main font-semibold">

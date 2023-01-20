@@ -4,14 +4,49 @@ import { Field, Form, Formik } from "formik";
 import { TextField, Button } from "../ui";
 import { checkoutSchema } from "../../js/validation";
 import { FaCreditCard, FaRegUser } from "react-icons/fa";
+import axios from "axios";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ checkoutId }) {
   const [formLoading, setFormLoading] = useState(false);
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const submitHandler = async (values) => {
-    console.log(values);
-    alert(1);
+    setFormLoading(true);
+
+    await axios
+      .post(
+        `${import.meta.env.VITE_API_URL}/tickets/buy/${checkoutId}`,
+        {},
+        {
+          headers: {
+            authorization: `bearer ${Cookies.get("jwt")}`,
+          },
+        }
+      )
+      .then(() => {
+        toast.success("Вие успешно закупихте билет");
+        navigate("../tickets", { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response ? err.response.data : err.message);
+        navigate("../tickets", { replace: true });
+      });
+
+    setFormLoading(false);
+  };
+
+  const formatToCCDate = (event) => {
+    const value = event.target.value;
+
+    if (event.key === "Backspace") {
+      if (event.target.value.endsWith("/"))
+        event.target.value = value.substr(0, value.length - 1);
+    } else if (value.length === 2) event.target.value += "/";
   };
 
   return (
@@ -43,7 +78,7 @@ export default function CheckoutForm() {
               label="Име"
               placeholder="e.g. Даниел"
               disabled={true}
-              maxLength={30}
+              maxLength={20}
               component={TextField}
               fullWidth
             />
@@ -54,7 +89,7 @@ export default function CheckoutForm() {
               label="Фамилия"
               placeholder="e.g. Димитров"
               disabled={true}
-              maxLength={30}
+              maxLength={20}
               component={TextField}
               fullWidth
             />
@@ -99,9 +134,10 @@ export default function CheckoutForm() {
               name="ccExpire"
               label="Дата на изтичане"
               sublabel="Въведете датата изписана на картата"
-              placeholder="0524"
+              placeholder="05/24"
+              onKeyPress={formatToCCDate}
               disabled={formLoading}
-              maxLength={4}
+              maxLength={5}
               component={TextField}
               fullWidth
             />
@@ -127,7 +163,7 @@ export default function CheckoutForm() {
           loading={formLoading}
           fullWidth
         >
-          Завършване на поръчката
+          Завърши поръчката
         </Button>
       </Form>
     </Formik>

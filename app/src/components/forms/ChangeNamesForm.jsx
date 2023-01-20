@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import { changeNamesSchema } from "../../js/validation";
 import { Button, TextField } from "../ui";
@@ -11,9 +11,11 @@ import axios from "axios";
 export default function ChangeNamesForm() {
   const dispatch = useDispatch();
   const [formLoading, setFormLoading] = useState(false);
+  const user = useSelector(state => state.user);
 
   const submitHandler = async (values) => {
     setFormLoading(true);
+    console.log(values);
 
     await axios
       .post(`${import.meta.env.VITE_API_URL}/user/update/name`, values, {
@@ -24,7 +26,7 @@ export default function ChangeNamesForm() {
       .then(() => {
         dispatch(
           setUser({
-            ...userData,
+            ...user,
             fullName: `${values.firstName} ${values.lastName}`,
           })
         );
@@ -60,7 +62,7 @@ export default function ChangeNamesForm() {
           label="Име"
           placeholder="e.g. Даниел"
           disabled={formLoading}
-          maxLength={30}
+          maxLength={20}
           component={TextField}
           fullWidth
         />
@@ -71,7 +73,7 @@ export default function ChangeNamesForm() {
           label="Фамилия"
           placeholder="e.g. Димитров"
           disabled={formLoading}
-          maxLength={30}
+          maxLength={20}
           component={TextField}
           fullWidth
         />

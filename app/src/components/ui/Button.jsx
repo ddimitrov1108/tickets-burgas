@@ -16,12 +16,14 @@ export default function Button({
   className,
   children = "Button",
   loading = false,
+  size = "normal",
   ...restProps
 }) {
   return (
     <button
       className={clsx(
-        "px-4 py-2.5 rounded-md transition-all outline-none font-semibold border text-sm disabled:opacity-80",
+        "px-4 rounded-md transition-all outline-none font-semibold border text-sm disabled:opacity-80",
+        size === "normal" ? "py-2.5" : size === "small" ? "py-1.5" : "py-3.5",
         buttonClassNames[variant],
         fullWidth ? "w-full" : "w-fit",
         className

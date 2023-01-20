@@ -51,7 +51,7 @@ export default function RegisterForm() {
             label="Име"
             placeholder="e.g. Даниел"
             disabled={formLoading}
-            maxLength={30}
+            maxLength={20}
             component={TextField}
             fullWidth
           />
@@ -62,7 +62,7 @@ export default function RegisterForm() {
             label="Фамилия"
             placeholder="e.g. Димитров"
             disabled={formLoading}
-            maxLength={30}
+            maxLength={20}
             component={TextField}
             fullWidth
           />
@@ -87,7 +87,7 @@ export default function RegisterForm() {
           label="Парола"
           placeholder="••••••••••"
           disabled={formLoading}
-          maxLength={100}
+          maxLength={20}
           component={TextField}
           fullWidth
         />

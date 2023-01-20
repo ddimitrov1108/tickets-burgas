@@ -48,7 +48,7 @@ namespace ticketBurgasAPI.Controllers
         [HttpPost("update/name")]
         public async Task<ActionResult> UserUpdateNames([FromBody] UserChangeNamesDto data)
         {
-            if (data.FirstName == null || data.LastName == null || !regex.Name.IsMatch($"{data.FirstName} {data.LastName}"))
+            if (data.FirstName == null || data.LastName == null || !regex.Name.IsMatch($"{data.FirstName} {data.LastName}") || !regex.Password.IsMatch(data.Password))
                 return BadRequest(badRequestMessage);
 
             var id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.SerialNumber));
@@ -58,7 +58,7 @@ namespace ticketBurgasAPI.Controllers
             if (user == null)
                 return NotFound(userNotFoundMessage);
 
-            if (!BCrypt.Net.BCrypt.Verify(data.CurrentPassword, user.Password))
+            if (!BCrypt.Net.BCrypt.Verify(data.Password, user.Password))
                 return BadRequest(badRequestMessage);
 
             user.FirstName = data.FirstName;
