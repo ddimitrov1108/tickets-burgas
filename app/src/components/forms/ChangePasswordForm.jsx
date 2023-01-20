@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Field, Form, Formik } from "formik";
 import { changePasswordSchema } from "../../js/validation";
 import { Button, TextField } from "../ui";
-import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import axios from "axios";
@@ -83,13 +82,10 @@ export default function ChangePasswordForm({}) {
           type="submit"
           className={"flex items-center justify-center mt-4 md:w-fit ml-auto"}
           disabled={formLoading}
+          loading={formLoading}
           fullWidth
         >
-          {formLoading ? (
-            <FaSpinner className="mx-12 text-xl animate-spin" />
-          ) : (
-            "Смяна на Паролата"
-          )}
+          Смяна на Паролата
         </Button>
       </Form>
     </Formik>

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import { changeNamesSchema } from "../../js/validation";
 import { Button, TextField } from "../ui";
-import { FaSpinner } from "react-icons/fa";
 import { setUser } from "../../store/slices/userSlice";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
@@ -93,13 +92,10 @@ export default function ChangeNamesForm() {
           type="submit"
           className={"flex items-center justify-center mt-4 md:w-fit ml-auto"}
           disabled={formLoading}
+          loading={formLoading}
           fullWidth
         >
-          {formLoading ? (
-            <FaSpinner className="mx-12 text-xl animate-spin" />
-          ) : (
-            "Смяна на имената"
-          )}
+          Смяна на имената
         </Button>
       </Form>
     </Formik>

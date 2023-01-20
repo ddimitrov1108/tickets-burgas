@@ -3,7 +3,6 @@ import { Field, Form, Formik } from "formik";
 import { loginSchema } from "../../js/validation";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, TextField } from "../ui";
-import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -23,7 +22,7 @@ export default function LoginForm() {
           secure: true,
         });
         setFormLoading(false);
-        navigate("/", { replace: true })
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -67,13 +66,10 @@ export default function LoginForm() {
           type="submit"
           className={"flex justify-center mt-4"}
           disabled={formLoading}
+          loading={formLoading}
           fullWidth
         >
-          {formLoading ? (
-            <FaSpinner className="text-xl animate-spin" />
-          ) : (
-            "Вход"
-          )}
+          Вход
         </Button>
 
         <NavLink to="/register">

@@ -9,7 +9,7 @@ export default function CheckoutView() {
   return !selectedTicket ? (
     <Navigate to="/404" replace />
   ) : (
-    <div className="lg:py-8 grid grid-cols-2 gap-12 lg:grid-cols-5">
+    <div className="lg:py-8 grid grid-cols-5 gap-12">
       <div className="col-span-5 order-2 lg:order-1 lg:col-span-3">
         <CheckoutForm />
       </div>

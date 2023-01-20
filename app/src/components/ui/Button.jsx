@@ -1,3 +1,4 @@
+import { FaSpinner } from "react-icons/fa";
 import clsx from "clsx";
 
 const buttonClassNames = {
@@ -14,6 +15,7 @@ export default function Button({
   fullWidth = false,
   className,
   children = "Button",
+  loading = false,
   ...restProps
 }) {
   return (
@@ -26,7 +28,11 @@ export default function Button({
       )}
       {...restProps}
     >
-      {children}
+      {loading ? (
+        <FaSpinner className="mx-12 text-xl animate-spin" />
+      ) : (
+        children
+      )}
     </button>
   );
 }

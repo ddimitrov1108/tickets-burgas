@@ -124,13 +124,10 @@ export default function CheckoutForm() {
           type="submit"
           className={"flex justify-center mt-4 md:w-fit ml-auto"}
           disabled={formLoading}
+          loading={formLoading}
           fullWidth
         >
-          {formLoading ? (
-            <FaSpinner className="mt-1 text-xl animate-spin" />
-          ) : (
-            "Закупуване на Билет"
-          )}
+          Завършване на поръчката
         </Button>
       </Form>
     </Formik>
