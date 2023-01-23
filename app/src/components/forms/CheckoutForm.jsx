@@ -7,19 +7,22 @@ import { FaCreditCard, FaRegUser } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function CheckoutForm({ checkoutId }) {
+export default function CheckoutForm() {
   const [formLoading, setFormLoading] = useState(false);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const submitHandler = async (values) => {
     setFormLoading(true);
 
     await axios
       .post(
-        `${import.meta.env.VITE_API_URL}/tickets/buy/${checkoutId}`,
+        `${import.meta.env.VITE_API_URL}/tickets/buy/${
+          location.state?.ticket.id
+        }`,
         {},
         {
           headers: {

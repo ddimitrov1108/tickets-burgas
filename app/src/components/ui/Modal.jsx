@@ -4,22 +4,22 @@ import { FaTimes } from "react-icons/fa";
 import clsx from "clsx";
 
 export default function Modal({
-  isModalOpen,
-  setIsModalOpen,
+  modalOpen,
+  setModalOpen,
   closeBtn = true,
   modalTitle = "",
   children,
 }) {
   const modalCloseBtnClickHandler = () => {
-    setIsModalOpen(false);
+    setModalOpen(false);
   };
 
   return (
-    <Transition appear show={isModalOpen} as={Fragment}>
+    <Transition appear show={modalOpen} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50"
-        open={isModalOpen}
+        open={modalOpen}
         onClose={() => {}}
       >
         <Transition.Child

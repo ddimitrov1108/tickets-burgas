@@ -1,19 +1,17 @@
 import ChangeNamesForm from "../forms/ChangeNamesForm";
 import Modal from "../ui/Modal";
 
-export default function ChangeNameModal({ isModalOpen, setIsModalOpen }) {
+export default function ChangeNameModal({ modalOpen, setModalOpen }) {
   return (
     <Modal
-      isModalOpen={isModalOpen}
-      setIsModalOpen={setIsModalOpen}
+      modalOpen={modalOpen}
+      setModalOpen={setModalOpen}
       modalTitle="Смяна на имената"
     >
-      <div className="">
-        <p className="text-sm text-secondary-dark">
-          При смяна на имената вашите активни билети и история на покупките не
-          подлежат на промяна или изтриване.
-        </p>
-      </div>
+      <p className="text-sm text-secondary-dark">
+        При смяна на имената вашите активни билети и история на покупките не
+        подлежат на промяна или изтриване.
+      </p>
       <ChangeNamesForm />
     </Modal>
   );

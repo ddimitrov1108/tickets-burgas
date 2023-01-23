@@ -18,7 +18,7 @@ const tickets = [
   },
 ];
 
-export default function HomeView() {
+export default function BuyTicketsView() {
   return (
     <>
       <div className="hidden mt-12 font-semibold text-center lg:block">

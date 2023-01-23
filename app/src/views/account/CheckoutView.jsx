@@ -11,7 +11,7 @@ export default function CheckoutView() {
   ) : (
     <div className="lg:py-8 grid grid-cols-5 gap-12">
       <div className="col-span-5 order-2 lg:order-1 lg:col-span-3">
-        <CheckoutForm checkoutId={selectedTicket.id} />
+        <CheckoutForm />
       </div>
 
       <Card

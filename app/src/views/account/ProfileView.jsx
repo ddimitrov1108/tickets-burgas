@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ChangeNameModal from "../../components/modals/ChangeNameModal";
@@ -15,15 +15,15 @@ export default function ProfileView() {
   const deactivateAccountHandler = () => setDelAccModalIsOpen(true);
 
   return (
-    <Fragment>
+    <>
       <ChangeNameModal
-        isModalOpen={nameModalIsOpen}
-        setIsModalOpen={setNameModalIsOpen}
+        modalOpen={nameModalIsOpen}
+        setModalOpen={setNameModalIsOpen}
       />
 
       <DeactivateAccountModal
-        isModalOpen={delAccModalIsOpen}
-        setIsModalOpen={setDelAccModalIsOpen}
+        modalOpen={delAccModalIsOpen}
+        setModalOpen={setDelAccModalIsOpen}
       />
 
       <Card className="flex flex-col items-center w-full gap-4 mb-4 md:p-8 md:flex-row">
@@ -54,8 +54,8 @@ export default function ProfileView() {
         <div className="mb-6">
           <span className="font-semibold">Смяна на паролата</span>
           <p className="text-sm text-secondary-dark">
-            Бъдете сигурни да въведете сигурна парола иначе рискувате
-            акаунта Ви да бъде изложен на риск
+            Бъдете сигурни да въведете сигурна парола иначе рискувате акаунта Ви
+            да бъде изложен на риск
           </p>
         </div>
         <ChangePasswordForm />
@@ -93,6 +93,6 @@ export default function ProfileView() {
           </NavLink>
         </div>
       </Card>
-    </Fragment>
+    </>
   );
 }

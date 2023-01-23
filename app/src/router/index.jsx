@@ -7,7 +7,7 @@ import LoginView from "../views/auth/LoginView";
 import LogoutView from "../views/auth/LogoutView";
 import RegisterView from "../views/auth/RegisterView";
 
-import HomeView from "../views/HomeView";
+import BuyTicketsView from "../views/BuyTicketsView";
 import HelpCenterView from "../views/HelpCenterView";
 import PageNotFoundView from "../views/PageNotFoundView";
 import ProfileView from "../views/account/ProfileView";
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <HomeView />,
+        element: <BuyTicketsView />,
       },
       {
         path: "/help",

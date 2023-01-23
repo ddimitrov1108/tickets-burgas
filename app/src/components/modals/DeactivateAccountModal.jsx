@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
+import { clearUser } from "../../store/slices/userSlice";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
 
-export default function DeactivateAccountModal({
-  isModalOpen,
-  setIsModalOpen,
-}) {
+export default function DeactivateAccountModal({ modalOpen, setModalOpen }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const deactivateAccount = async () => {
     await axios
@@ -21,7 +21,10 @@ export default function DeactivateAccountModal({
       .then(({ data }) => {
         console.log(data);
         toast.success("Вашият акаунт беше успешно деактивиран!");
-        navigate("/logout", { replace: true });
+        Cookies.remove("jwt");
+        dispatch(clearUser());
+        navigate(0);
+        //navigate("/logout", { replace: true });
       })
       .catch((err) =>
         toast.error(err.response ? err.response.data : err.message)
@@ -29,12 +32,12 @@ export default function DeactivateAccountModal({
   };
 
   const confirmHandler = () => deactivateAccount();
-  const cancelHandler = () => setIsModalOpen(false);
+  const cancelHandler = () => setModalOpen(false);
 
   return (
     <Modal
-      isModalOpen={isModalOpen}
-      setIsModalOpen={setIsModalOpen}
+      modalOpen={modalOpen}
+      setModalOpen={setModalOpen}
       modalTitle="Потвърждение за деактивиране на акаунта"
     >
       <p className="mb-4 text-sm text-secondary-dark">

@@ -99,6 +99,12 @@ namespace ticketBurgasAPI.Controllers
             var id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.SerialNumber));
             User? user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
+            if (user == null)
+                return NotFound(userNotFoundMessage);
+
+            user.Deactivated = true;
+            await context.SaveChangesAsync();
+
             return Ok();
         }
     }
